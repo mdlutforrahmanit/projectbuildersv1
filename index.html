@@ -1,0 +1,1603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Premium construction services with unmatched quality and precision. Residential, commercial, and renovation experts.">
+    <title>EliteBuild Constructors | Premium Construction Services</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #000;
+            color: #e5e5e5;
+            scroll-behavior: smooth;
+        }
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .project-card:hover .project-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .project-overlay {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+        .before-after {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+        }
+        .before-after img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .before-after .after {
+            width: 50%;
+        }
+        .slider {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+        }
+        .slider input {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            outline: none;
+            background: none;
+            -webkit-appearance: none;
+            z-index: 100;
+        }
+        .slider input::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 8px;
+            height: 500px;
+            background: #fff;
+            cursor: pointer;
+        }
+        .slider .slider-button {
+            position: absolute;
+            left: calc(50% - 25px);
+            top: 50%;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #fff;
+            z-index: 50;
+            pointer-events: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .counter {
+            font-size: 4rem;
+            font-weight: 700;
+            color: #f59e0b;
+        }
+        .faq-item {
+            border-bottom: 1px solid #333;
+        }
+        .faq-question {
+            cursor: pointer;
+            padding: 1.5rem 0;
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .faq-answer.active {
+            max-height: 300px;
+        }
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #f59e0b;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .nav-link.active::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-black bg-opacity-90 z-50 py-4 px-6 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="#" class="text-2xl font-bold text-yellow-400">Elite<span class="text-white">Build</span></a>
+            </div>
+            
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link text-white hover:text-yellow-400 active">Home</a>
+                <a href="#about" class="nav-link text-white hover:text-yellow-400">About</a>
+                <a href="#services" class="nav-link text-white hover:text-yellow-400">Services</a>
+                <a href="#projects" class="nav-link text-white hover:text-yellow-400">Projects</a>
+                <a href="#contact" class="nav-link text-white hover:text-yellow-400">Contact</a>
+            </div>
+            
+            <div class="hidden md:block">
+                <a href="#contact" class="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-2 px-6 rounded transition duration-300">Get a Quote</a>
+            </div>
+            
+            <!-- Mobile menu button -->
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="md:hidden hidden bg-black py-4 px-6 absolute left-0 right-0 top-16 border-t border-gray-800">
+            <div class="flex flex-col space-y-4">
+                <a href="#home" class="text-white hover:text-yellow-400">Home</a>
+                <a href="#about" class="text-white hover:text-yellow-400">About</a>
+                <a href="#services" class="text-white hover:text-yellow-400">Services</a>
+                <a href="#projects" class="text-white hover:text-yellow-400">Projects</a>
+                <a href="#contact" class="text-white hover:text-yellow-400">Contact</a>
+                <a href="#contact" class="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded text-center transition duration-300">Get a Quote</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Banner -->
+    <section id="home" class="hero-bg min-h-screen flex items-center justify-center pt-20">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6">We Build the Future <span class="text-yellow-400">with Precision</span></h1>
+            <p class="text-xl md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto">Premium construction services with unmatched quality, safety standards, and innovative solutions for residential and commercial projects.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#contact" class="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 px-8 rounded-lg text-lg transition duration-300">Get a Quote</a>
+                <a href="#projects" class="bg-transparent hover:bg-gray-800 text-white font-bold py-3 px-8 border border-white rounded-lg text-lg transition duration-300">View Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About the Company -->
+    <section id="about" class="py-20 bg-black">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">Building Excellence Since 2005</h2>
+                <div class="w-20 h-1 bg-yellow-400 mx-auto"></div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row gap-12 items-center">
+                <div class="md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Our Office" class="rounded-lg shadow-2xl w-full h-auto object-cover">
+                </div>
+                
+                <div class="md:w-1/2">
+                    <h3 class="text-3xl font-bold text-white mb-6">Our Story</h3>
+                    <p class="text-gray-300 mb-6">Founded in 2005, EliteBuild Constructors has grown from a small local builder to a premier construction firm serving clients nationwide. Our commitment to quality and innovation has remained unchanged.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <div class="bg-gray-900 p-6 rounded-lg">
+                            <div class="text-yellow-400 text-3xl mb-3">20+</div>
+                            <h4 class="text-white font-bold mb-2">Years Experience</h4>
+                            <p class="text-gray-300">Delivering exceptional construction services</p>
+                        </div>
+                        <div class="bg-gray-900 p-6 rounded-lg">
+                            <div class="text-yellow-400 text-3xl mb-3">500+</div>
+                            <h4 class="text-white font-bold mb-2">Projects Completed</h4>
+                            <p class="text-gray-300">Across residential and commercial sectors</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center space-x-4">
+                        <div class="flex -space-x-2">
+                            <img class="w-10 h-10 rounded-full border-2 border-gray-800" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Team member">
+                            <img class="w-10 h-10 rounded-full border-2 border-gray-800" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Team member">
+                            <img class="w-10 h-10 rounded-full border-2 border-gray-800" src="https://randomuser.me/api/portraits/men/75.jpg" alt="Team member">
+                        </div>
+                        <div>
+                            <p class="text-gray-300">Certified by:</p>
+                            <div class="flex space-x-2">
+                                <span class="text-xs bg-gray-800 text-yellow-400 px-2 py-1 rounded">ISO 9001</span>
+                                <span class="text-xs bg-gray-800 text-yellow-400 px-2 py-1 rounded">OSHA</span>
+                                <span class="text-xs bg-gray-800 text-yellow-400 px-2 py-1 rounded">LEED</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Core Services -->
+    <section id="services" class="py-20 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">Our Core Services</h2>
+                <p class="text-gray-300 max-w-2xl mx-auto">Comprehensive construction solutions tailored to your unique needs and vision.</p>
+                <div class="w-20 h-1 bg-yellow-400 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden hover:shadow-lg hover:shadow-yellow-400/20 transition duration-300 hover:-translate-y-2">
+                    <img src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Residential Construction" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="text-yellow-400 text-2xl mb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Residential Construction</h3>
+                        <p class="text-gray-300">Custom homes, luxury estates, and multi-family units built to your exact specifications with premium materials.</p>
+                    </div>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden hover:shadow-lg hover:shadow-yellow-400/20 transition duration-300 hover:-translate-y-2">
+                    <img src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Commercial Construction" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="text-yellow-400 text-2xl mb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Commercial Construction</h3>
+                        <p class="text-gray-300">Office buildings, retail spaces, and industrial facilities designed for functionality, aesthetics, and durability.</p>
+                    </div>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden hover:shadow-lg hover:shadow-yellow-400/20 transition duration-300 hover:-translate-y-2">
+                    <img src="https://images.unsplash.com/photo-1683372101362-2efc3e75650e?q=80&w=869&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Renovation & Remodeling" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="text-yellow-400 text-2xl mb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Renovation & Remodeling</h3>
+                        <p class="text-gray-300">Transform your existing space with our expert renovation services that preserve character while adding modern functionality.</p>
+                    </div>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden hover:shadow-lg hover:shadow-yellow-400/20 transition duration-300 hover:-translate-y-2">
+                    <img src="https://images.unsplash.com/photo-1728333689594-9aaaf19dde10?q=80&w=1012&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Roadwork & Infrastructure" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="text-yellow-400 text-2xl mb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Roadwork & Infrastructure</h3>
+                        <p class="text-gray-300">Public works projects including roads, bridges, and utilities with a focus on community impact and sustainability.</p>
+                    </div>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden hover:shadow-lg hover:shadow-yellow-400/20 transition duration-300 hover:-translate-y-2">
+                    <img src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Sustainable Building" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="text-yellow-400 text-2xl mb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Sustainable Building</h3>
+                        <p class="text-gray-300">Eco-friendly construction solutions that reduce environmental impact while maintaining premium quality standards.</p>
+                    </div>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden hover:shadow-lg hover:shadow-yellow-400/20 transition duration-300 hover:-translate-y-2">
+                    <img src="https://images.unsplash.com/photo-1677078610588-aed2834ad968?q=80&w=876&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Project Management" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="text-yellow-400 text-2xl mb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Project Management</h3>
+                        <p class="text-gray-300">Comprehensive oversight from concept to completion ensuring timelines, budgets, and quality standards are met.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Projects -->
+    <section id="projects" class="py-20 bg-black">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">Our Recent Projects</h2>
+                <p class="text-gray-300 max-w-2xl mx-auto">Showcasing our expertise through completed works that stand the test of time.</p>
+                <div class="w-20 h-1 bg-yellow-400 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Project 1 -->
+                <div class="relative project-card rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Luxury Residence" class="w-full h-64 object-cover">
+                    <div class="project-overlay absolute inset-0 bg-black bg-opacity-70 flex flex-col justify-end p-6 transition duration-300">
+                        <h3 class="text-xl font-bold text-white">Hillside Luxury Residence</h3>
+                        <p class="text-gray-300 mb-4">Modern 5-bedroom home with panoramic views and sustainable features</p>
+                        <div class="flex space-x-2">
+                            <span class="text-xs bg-gray-800 text-yellow-400 px-2 py-1 rounded">Residential</span>
+                            <span class="text-xs bg-gray-800 text-yellow-400 px-2 py-1 rounded">2024</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="relative project-card rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Office Complex" class="w-full h-64 object-cover">
+                    <div class="project-overlay absolute inset-0 bg-black bg-opacity-70 flex flex-col justify-end p-6 transition duration-300">
+                        <h3 class="text-xl font-bold text-white">Downtown Office Complex</h3>
+                        <p class="text-gray-300 mb-4">12-story LEED-certified commercial building with retail space</p>
+                        <div class="flex space-x-2">
+                            <span class="text-xs bg-gray-800 text-yellow-400 px-2 py-1 rounded">Commercial</span>
+                            <span class="text-xs bg-gray-800 text-yellow-400 px-2 py-1 rounded">2023</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="relative project-card rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Community Center" class="w-full h-64 object-cover">
+                    <div class="project-overlay absolute inset-0 bg-black bg-opacity-70 flex flex-col justify-end p-6 transition duration-300">
+                        <h3 class="text-xl font-bold text-white">Greenfield Community Center</h3>
+                        <p class="text-gray-300 mb-4">Net-zero energy public facility with multipurpose spaces</p>
+                        <div class="flex space-x-2">
+                            <span class="text-xs bg-gray-800 text-yellow-400 px-2 py-1 rounded">Public</span>
+                            <span class="text-xs bg-gray-800 text-yellow-400 px-2 py-1 rounded">2023</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 4 -->
+                <div class="relative project-card rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2053&q=80" alt="Historic Renovation" class="w-full h-64 object-cover">
+                    <div class="project-overlay absolute inset-0 bg-black bg-opacity-70 flex flex-col justify-end p-6 transition duration-300">
+                        <h3 class="text-xl font-bold text-white">Historic Brownstone Renovation</h3>
+                        <p class="text-gray-300 mb-4">Preservation of 1920s architecture with modern interior updates</p>
+                        <div class="flex space-x-2">
+                            <span class="text-xs bg-gray-800 text-yellow-400 px-2 py-1 rounded">Renovation</span>
+                            <span class="text-xs bg-gray-800 text-yellow-400 px-2 py-1 rounded">2024</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 5 -->
+                <div class="relative project-card rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Mixed-Use Development" class="w-full h-64 object-cover">
+                    <div class="project-overlay absolute inset-0 bg-black bg-opacity-70 flex flex-col justify-end p-6 transition duration-300">
+                        <h3 class="text-xl font-bold text-white">Riverside Mixed-Use Development</h3>
+                        <p class="text-gray-300 mb-4">Combining residential, retail, and public spaces in urban setting</p>
+                        <div class="flex space-x-2">
+                            <span class="text-xs bg-gray-800 text-yellow-400 px-2 py-1 rounded">Mixed-Use</span>
+                            <span class="text-xs bg-gray-800 text-yellow-400 px-2 py-1 rounded">2022</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 6 -->
+                <div class="relative project-card rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Highway Expansion" class="w-full h-64 object-cover">
+                    <div class="project-overlay absolute inset-0 bg-black bg-opacity-70 flex flex-col justify-end p-6 transition duration-300">
+                        <h3 class="text-xl font-bold text-white">State Highway Expansion</h3>
+                        <p class="text-gray-300 mb-4">10-mile roadway improvement with innovative traffic solutions</p>
+                        <div class="flex space-x-2">
+                            <span class="text-xs bg-gray-800 text-yellow-400 px-2 py-1 rounded">Infrastructure</span>
+                            <span class="text-xs bg-gray-800 text-yellow-400 px-2 py-1 rounded">2021</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#contact" class="inline-block bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 px-8 rounded-lg text-lg transition duration-300">Start Your Project</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Developments -->
+    <section class="py-20 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">Upcoming Developments</h2>
+                <p class="text-gray-300 max-w-2xl mx-auto">Current projects shaping the future of our communities.</p>
+                <div class="w-20 h-1 bg-yellow-400 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="relative">
+                <!-- Timeline line -->
+                <div class="hidden md:block absolute left-1/2 h-full w-1 bg-yellow-400"></div>
+                
+                <!-- Timeline items -->
+                <div class="space-y-12 md:space-y-0">
+                    <!-- Item 1 -->
+                    <div class="flex flex-col md:flex-row items-center justify-between mb-16">
+                        <div class="md:w-5/12 mb-6 md:mb-0 md:pr-12 text-right">
+                            <h3 class="text-2xl font-bold text-white mb-2">Marina Bay Towers</h3>
+                            <p class="text-gray-300 mb-4">Luxury waterfront condominiums with sustainable design features and premium amenities.</p>
+                            <div class="flex justify-end space-x-2">
+                                <span class="text-xs bg-gray-800 text-yellow-400 px-2 py-1 rounded">Residential</span>
+                                <span class="text-xs bg-gray-800 text-yellow-400 px-2 py-1 rounded">Q3 2025</span>
+                            </div>
+                        </div>
+                        <div class="hidden md:flex w-2/12 justify-center">
+                            <div class="w-6 h-6 rounded-full bg-yellow-400 border-4 border-gray-900"></div>
+                        </div>
+                        <div class="md:w-5/12">
+                            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2053&q=80" alt="Marina Bay Towers" class="rounded-lg shadow-lg w-full h-64 object-cover">
+                        </div>
+                    </div>
+                    
+                    <!-- Item 2 -->
+                    <div class="flex flex-col md:flex-row items-center justify-between mb-16">
+                        <div class="md:w-5/12 order-3 md:order-1">
+                            <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Tech Campus Expansion" class="rounded-lg shadow-lg w-full h-64 object-cover">
+                        </div>
+                        <div class="hidden md:flex w-2/12 justify-center order-2">
+                            <div class="w-6 h-6 rounded-full bg-yellow-400 border-4 border-gray-900"></div>
+                        </div>
+                        <div class="md:w-5/12 order-1 md:order-3 mb-6 md:mb-0 md:pl-12 text-left">
+                            <h3 class="text-2xl font-bold text-white mb-2">Tech Campus Expansion</h3>
+                            <p class="text-gray-300 mb-4">State-of-the-art office complex designed for innovation and collaboration in the tech sector.</p>
+                            <div class="flex space-x-2">
+                                <span class="text-xs bg-gray-800 text-yellow-400 px-2 py-1 rounded">Commercial</span>
+                                <span class="text-xs bg-gray-800 text-yellow-400 px-2 py-1 rounded">Q1 2026</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 3 -->
+                    <div class="flex flex-col md:flex-row items-center justify-between">
+                        <div class="md:w-5/12 mb-6 md:mb-0 md:pr-12 text-right">
+                            <h3 class="text-2xl font-bold text-white mb-2">Urban Renewal Project</h3>
+                            <p class="text-gray-300 mb-4">Transforming neglected urban areas into vibrant mixed-use communities with green spaces.</p>
+                            <div class="flex justify-end space-x-2">
+                                <span class="text-xs bg-gray-800 text-yellow-400 px-2 py-1 rounded">Public</span>
+                                <span class="text-xs bg-gray-800 text-yellow-400 px-2 py-1 rounded">Q2 2026</span>
+                            </div>
+                        </div>
+                        <div class="hidden md:flex w-2/12 justify-center">
+                            <div class="w-6 h-6 rounded-full bg-yellow-400 border-4 border-gray-900"></div>
+                        </div>
+                        <div class="md:w-5/12">
+                            <img src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Urban Renewal Project" class="rounded-lg shadow-lg w-full h-64 object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Clients Choose Us -->
+    <section class="py-20 bg-black">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">Why Clients Choose Us</h2>
+                <p class="text-gray-300 max-w-2xl mx-auto">The EliteBuild difference - what sets us apart in the construction industry.</p>
+                <div class="w-20 h-1 bg-yellow-400 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Reason 1 -->
+                <div class="bg-gray-900 p-8 rounded-lg hover:shadow-lg hover:shadow-yellow-400/20 transition duration-300">
+                    <div class="text-yellow-400 text-4xl mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Uncompromising Quality</h3>
+                    <p class="text-gray-300">We source only premium materials and employ rigorous quality control at every stage of construction.</p>
+                </div>
+                
+                <!-- Reason 2 -->
+                <div class="bg-gray-900 p-8 rounded-lg hover:shadow-lg hover:shadow-yellow-400/20 transition duration-300">
+                    <div class="text-yellow-400 text-4xl mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Safety First</h3>
+                    <p class="text-gray-300">Our zero-accident policy and continuous training ensure the safest possible work environment.</p>
+                </div>
+                
+                <!-- Reason 3 -->
+                <div class="bg-gray-900 p-8 rounded-lg hover:shadow-lg hover:shadow-yellow-400/20 transition duration-300">
+                    <div class="text-yellow-400 text-4xl mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">On-Time Delivery</h3>
+                    <p class="text-gray-300">98% of our projects are completed on or ahead of schedule through meticulous planning.</p>
+                </div>
+                
+                <!-- Reason 4 -->
+                <div class="bg-gray-900 p-8 rounded-lg hover:shadow-lg hover:shadow-yellow-400/20 transition duration-300">
+                    <div class="text-yellow-400 text-4xl mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Innovative Solutions</h3>
+                    <p class="text-gray-300">We leverage cutting-edge technology and creative problem-solving to overcome challenges.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Client Case Study -->
+    <section class="py-20 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">Client Success Story</h2>
+                <p class="text-gray-300 max-w-2xl mx-auto">Transforming visions into reality - a showcase of our recent collaboration.</p>
+                <div class="w-20 h-1 bg-yellow-400 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="before-after rounded-lg overflow-hidden shadow-2xl relative">
+                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2053&q=80" alt="Before" class="w-full h-full object-cover">
+                <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="After" class="after w-full h-full object-cover">
+                <div class="slider">
+                    <input type="range" min="0" max="100" value="50" class="slider-range">
+                    <div class="slider-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 bg-gray-800 p-8 rounded-lg">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/4 mb-6 md:mb-0 flex justify-center">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Client" class="w-24 h-24 rounded-full border-4 border-yellow-400">
+                    </div>
+                    <div class="md:w-3/4 md:pl-8">
+                        <blockquote class="text-lg italic text-gray-300 mb-4">"EliteBuild transformed our outdated office building into a modern, functional workspace that our employees love. Their attention to detail and commitment to staying on schedule was impressive throughout the 10-month project."</blockquote>
+                        <div class="text-white font-bold">Sarah Johnson</div>
+                        <div class="text-yellow-400">CEO, TechForward Inc.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Process -->
+    <section class="py-20 bg-black">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">Our Proven Process</h2>
+                <p class="text-gray-300 max-w-2xl mx-auto">A structured approach that ensures success from concept to completion.</p>
+                <div class="w-20 h-1 bg-yellow-400 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="relative">
+                <!-- Process line -->
+                <div class="hidden md:block absolute left-0 right-0 top-1/2 h-1 bg-gray-700"></div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <!-- Step 1 -->
+                    <div class="relative bg-gray-900 p-8 rounded-lg hover:shadow-lg hover:shadow-yellow-400/20 transition duration-300 text-center">
+                        <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center text-black font-bold text-xl">1</div>
+                        <div class="text-yellow-400 text-4xl mb-4 flex justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Initial Consultation</h3>
+                        <p class="text-gray-300">We listen to your vision, assess requirements, and outline project feasibility.</p>
+                    </div>
+                    
+                    <!-- Step 2 -->
+                    <div class="relative bg-gray-900 p-8 rounded-lg hover:shadow-lg hover:shadow-yellow-400/20 transition duration-300 text-center">
+                        <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center text-black font-bold text-xl">2</div>
+                        <div class="text-yellow-400 text-4xl mb-4 flex justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Design & Planning</h3>
+                        <p class="text-gray-300">Our architects create detailed plans while engineers develop technical specifications.</p>
+                    </div>
+                    
+                    <!-- Step 3 -->
+                    <div class="relative bg-gray-900 p-8 rounded-lg hover:shadow-lg hover:shadow-yellow-400/20 transition duration-300 text-center">
+                        <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center text-black font-bold text-xl">3</div>
+                        <div class="text-yellow-400 text-4xl mb-4 flex justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Construction</h3>
+                        <p class="text-gray-300">Skilled craftsmen bring designs to life with quality materials and precision work.</p>
+                    </div>
+                    
+                    <!-- Step 4 -->
+                    <div class="relative bg-gray-900 p-8 rounded-lg hover:shadow-lg hover:shadow-yellow-400/20 transition duration-300 text-center">
+                        <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center text-black font-bold text-xl">4</div>
+                        <div class="text-yellow-400 text-4xl mb-4 flex justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Final Handover</h3>
+                        <p class="text-gray-300">We conduct thorough inspections and provide comprehensive documentation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meet the Team -->
+    <section class="py-20 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">Meet Our Leadership Team</h2>
+                <p class="text-gray-300 max-w-2xl mx-auto">Experienced professionals dedicated to your project's success.</p>
+                <div class="w-20 h-1 bg-yellow-400 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Team Member 1 -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden hover:shadow-lg hover:shadow-yellow-400/20 transition duration-300">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="James Wilson" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-1">James Wilson</h3>
+                        <p class="text-yellow-400 mb-3">Founder & CEO</p>
+                        <p class="text-gray-300 mb-4">25+ years in commercial construction and project management.</p>
+                        <a href="#" class="text-gray-400 hover:text-yellow-400 transition duration-300 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                            </svg>
+                            Connect on LinkedIn
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Team Member 2 -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden hover:shadow-lg hover:shadow-yellow-400/20 transition duration-300">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Chen" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-1">Sarah Chen</h3>
+                        <p class="text-yellow-400 mb-3">Chief Operations Officer</p>
+                        <p class="text-gray-300 mb-4">Specializes in large-scale project coordination and logistics.</p>
+                        <a href="#" class="text-gray-400 hover:text-yellow-400 transition duration-300 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                            </svg>
+                            Connect on LinkedIn
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Team Member 3 -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden hover:shadow-lg hover:shadow-yellow-400/20 transition duration-300">
+                    <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Michael Rodriguez" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-1">Michael Rodriguez</h3>
+                        <p class="text-yellow-400 mb-3">Head of Architecture</p>
+                        <p class="text-gray-300 mb-4">Award-winning designs that balance form, function, and sustainability.</p>
+                        <a href="#" class="text-gray-400 hover:text-yellow-400 transition duration-300 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                            </svg>
+                            Connect on LinkedIn
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Team Member 4 -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden hover:shadow-lg hover:shadow-yellow-400/20 transition duration-300">
+                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Emily Park" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-1">Emily Park</h3>
+                        <p class="text-yellow-400 mb-3">Director of Safety</p>
+                        <p class="text-gray-300 mb-4">Ensuring OSHA compliance and implementing cutting-edge safety protocols.</p>
+                        <a href="#" class="text-gray-400 hover:text-yellow-400 transition duration-300 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                            </svg>
+                            Connect on LinkedIn
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Plans -->
+    <section class="py-20 bg-black">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">Transparent Pricing</h2>
+                <p class="text-gray-300 max-w-2xl mx-auto">Customized solutions at competitive rates with no hidden costs.</p>
+                <div class="w-20 h-1 bg-yellow-400 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Plan 1 -->
+                <div class="bg-gray-900 rounded-lg overflow-hidden hover:shadow-lg hover:shadow-yellow-400/20 transition duration-300">
+                    <div class="p-8 border-b border-gray-800">
+                        <h3 class="text-2xl font-bold text-white mb-2">Basic</h3>
+                        <p class="text-gray-300 mb-4">For small-scale projects and renovations</p>
+                        <div class="text-yellow-400 text-4xl font-bold mb-4">$120<span class="text-lg">/sq.ft.</span></div>
+                        <a href="#contact" class="block bg-gray-800 hover:bg-yellow-400 hover:text-black text-white text-center font-bold py-3 px-6 rounded-lg transition duration-300">Get Started</a>
+                    </div>
+                    <div class="p-8">
+                        <ul class="space-y-3">
+                            <li class="flex items-center text-gray-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                </svg>
+                                Standard materials
+                            </li>
+                            <li class="flex items-center text-gray-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                </svg>
+                                Project management
+                            </li>
+                            <li class="flex items-center text-gray-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                </svg>
+                                6-month warranty
+                            </li>
+                            <li class="flex items-center text-gray-400">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-600 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                                Custom design
+                            </li>
+                            <li class="flex items-center text-gray-400">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-600 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                                Premium materials
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Plan 2 (Featured) -->
+                <div class="bg-gray-900 rounded-lg overflow-hidden border-2 border-yellow-400 transform scale-105 hover:shadow-lg hover:shadow-yellow-400/30 transition duration-300">
+                    <div class="p-8 border-b border-gray-800">
+                        <div class="bg-yellow-400 text-black text-xs font-bold px-3 py-1 rounded-full inline-block mb-3">MOST POPULAR</div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Standard</h3>
+                        <p class="text-gray-300 mb-4">For mid-range residential and commercial projects</p>
+                        <div class="text-yellow-400 text-4xl font-bold mb-4">$180<span class="text-lg">/sq.ft.</span></div>
+                        <a href="#contact" class="block bg-yellow-400 hover:bg-yellow-500 text-black text-center font-bold py-3 px-6 rounded-lg transition duration-300">Get Started</a>
+                    </div>
+                    <div class="p-8">
+                        <ul class="space-y-3">
+                            <li class="flex items-center text-gray-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                </svg>
+                                Mid-grade materials
+                            </li>
+                            <li class="flex items-center text-gray-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                </svg>
+                                Custom design options
+                            </li>
+                            <li class="flex items-center text-gray-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                </svg>
+                                12-month warranty
+                            </li>
+                            <li class="flex items-center text-gray-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                </svg>
+                                Dedicated project manager
+                            </li>
+                            <li class="flex items-center text-gray-400">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-600 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                                Premium materials
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Plan 3 -->
+                <div class="bg-gray-900 rounded-lg overflow-hidden hover:shadow-lg hover:shadow-yellow-400/20 transition duration-300">
+                    <div class="p-8 border-b border-gray-800">
+                        <h3 class="text-2xl font-bold text-white mb-2">Premium</h3>
+                        <p class="text-gray-300 mb-4">For high-end custom builds and luxury projects</p>
+                        <div class="text-yellow-400 text-4xl font-bold mb-4">$250<span class="text-lg">/sq.ft.</span></div>
+                        <a href="#contact" class="block bg-gray-800 hover:bg-yellow-400 hover:text-black text-white text-center font-bold py-3 px-6 rounded-lg transition duration-300">Get Started</a>
+                    </div>
+                    <div class="p-8">
+                        <ul class="space-y-3">
+                            <li class="flex items-center text-gray-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                </svg>
+                                Premium materials
+                            </li>
+                            <li class="flex items-center text-gray-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                </svg>
+                                Full custom design
+                            </li>
+                            <li class="flex items-center text-gray-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                </svg>
+                                24-month warranty
+                            </li>
+                            <li class="flex items-center text-gray-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                </svg>
+                                Senior project manager
+                            </li>
+                            <li class="flex items-center text-gray-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                </svg>
+                                Monthly progress reports
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <p class="text-gray-400 mb-4">Need a custom solution? We tailor our services to your exact requirements.</p>
+                <a href="#contact" class="inline-block border border-yellow-400 hover:bg-yellow-400 hover:text-black text-yellow-400 font-bold py-3 px-8 rounded-lg text-lg transition duration-300">Request Full Estimate</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Construction by the Numbers -->
+    <section class="py-20 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">Construction by the Numbers</h2>
+                <p class="text-gray-300 max-w-2xl mx-auto">Quantifying our impact and expertise in the construction industry.</p>
+                <div class="w-20 h-1 bg-yellow-400 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+                <!-- Stat 1 -->
+                <div class="bg-gray-800 p-8 rounded-lg">
+                    <div class="counter mb-2" data-target="250">0</div>
+                    <h3 class="text-xl font-bold text-white">Projects Completed</h3>
+                </div>
+                
+                <!-- Stat 2 -->
+                <div class="bg-gray-800 p-8 rounded-lg">
+                    <div class="counter mb-2" data-target="150000">0</div>
+                    <h3 class="text-xl font-bold text-white">Man-Hours Logged</h3>
+                </div>
+                
+                <!-- Stat 3 -->
+                <div class="bg-gray-800 p-8 rounded-lg">
+                    <div class="counter mb-2" data-target="8500">0</div>
+                    <h3 class="text-xl font-bold text-white">Tons of Steel</h3>
+                </div>
+                
+                <!-- Stat 4 -->
+                <div class="bg-gray-800 p-8 rounded-lg">
+                    <div class="counter mb-2" data-target="98">0</div>
+                    <h3 class="text-xl font-bold text-white">Satisfied Clients</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications, Awards & Affiliates -->
+    <section class="py-20 bg-black">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">Our Credentials</h2>
+                <p class="text-gray-300 max-w-2xl mx-auto">Recognized by industry leaders for excellence in construction.</p>
+                <div class="w-20 h-1 bg-yellow-400 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-8 items-center justify-center">
+                <div class="flex justify-center grayscale hover:grayscale-0 transition duration-300">
+                    <img src="https://png.pngtree.com/png-clipart/20250201/original/pngtree-iso-9001-certified-vector-png-image_20368615.png" alt="ISO 9001" class="h-16 object-contain">
+                </div>
+                <div class="flex justify-center grayscale hover:grayscale-0 transition duration-300">
+                    <img src="https://bc-llp.com/wp-content/uploads/2016/12/Osha-30.png" alt="OSHA" class="h-16 object-contain">
+                </div>
+                <div class="flex justify-center grayscale hover:grayscale-0 transition duration-300">
+                    <img src="https://d11poilh9xnq24.cloudfront.net/blog-images/leed-certification-logo.png" alt="LEED" class="h-16 object-contain">
+                </div>
+                <div class="flex justify-center grayscale hover:grayscale-0 transition duration-300">
+                    <img src="https://fchea.org/wp-content/uploads/2024/07/AGC_Logo.svg" alt="AGC" class="h-16 object-contain">
+                </div>
+                <div class="flex justify-center grayscale hover:grayscale-0 transition duration-300">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/8/82/ABCIncLogo.png" alt="ABC" class="h-16 object-contain">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What We Build With -->
+    <section class="py-20 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">What We Build With</h2>
+                <p class="text-gray-300 max-w-2xl mx-auto">Premium materials and sustainable solutions for lasting quality.</p>
+                <div class="w-20 h-1 bg-yellow-400 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Material 1 -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden hover:shadow-lg hover:shadow-yellow-400/20 transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1627922529156-41f27fb6f7ac?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Steel" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-3">Structural Steel</h3>
+                        <p class="text-gray-300 mb-4">High-strength steel frameworks for superior durability and design flexibility in commercial and industrial projects.</p>
+                        <div class="flex space-x-2">
+                            <span class="text-xs bg-gray-700 text-yellow-400 px-2 py-1 rounded">High Load Capacity</span>
+                            <span class="text-xs bg-gray-700 text-yellow-400 px-2 py-1 rounded">Fire Resistant</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Material 2 -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden hover:shadow-lg hover:shadow-yellow-400/20 transition duration-300">
+                    <img src="https://plus.unsplash.com/premium_photo-1681400198417-69449c9a961b?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Concrete" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-3">Reinforced Concrete</h3>
+                        <p class="text-gray-300 mb-4">Custom-mixed concrete solutions with advanced additives for enhanced performance and longevity.</p>
+                        <div class="flex space-x-2">
+                            <span class="text-xs bg-gray-700 text-yellow-400 px-2 py-1 rounded">Weather Resistant</span>
+                            <span class="text-xs bg-gray-700 text-yellow-400 px-2 py-1 rounded">Soundproof</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Material 3 -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden hover:shadow-lg hover:shadow-yellow-400/20 transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2053&q=80" alt="Eco-Friendly" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-3">Eco-Friendly Materials</h3>
+                        <p class="text-gray-300 mb-4">Sustainable building options including recycled materials, bamboo, and low-VOC products for healthier environments.</p>
+                        <div class="flex space-x-2">
+                            <span class="text-xs bg-gray-700 text-yellow-400 px-2 py-1 rounded">Energy Efficient</span>
+                            <span class="text-xs bg-gray-700 text-yellow-400 px-2 py-1 rounded">LEED Certified</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQs -->
+    <section class="py-20 bg-black">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">Frequently Asked Questions</h2>
+                <p class="text-gray-300 max-w-2xl mx-auto">Answers to common questions about our construction services.</p>
+                <div class="w-20 h-1 bg-yellow-400 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <!-- FAQ 1 -->
+                <div class="faq-item mb-4">
+                    <div class="faq-question flex justify-between items-center">
+                        <h3 class="text-xl font-bold text-white">How long does a typical construction project take?</h3>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-400 transform transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="text-gray-300 pb-4">Project timelines vary significantly based on size and complexity. A small residential renovation might take 2-3 months, while a large commercial project could require 12-18 months. During our initial consultation, we'll provide a detailed timeline based on your specific project requirements.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 2 -->
+                <div class="faq-item mb-4">
+                    <div class="faq-question flex justify-between items-center">
+                        <h3 class="text-xl font-bold text-white">What's included in your construction costs?</h3>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-400 transform transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="text-gray-300 pb-4">Our transparent pricing includes all labor, materials, equipment, permits, and project management. We provide detailed breakdowns in our estimates so you understand exactly what you're paying for. There are no hidden fees - any changes during the project are documented in change orders with clear pricing.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 3 -->
+                <div class="faq-item mb-4">
+                    <div class="faq-question flex justify-between items-center">
+                        <h3 class="text-xl font-bold text-white">How do you handle project delays?</h3>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-400 transform transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="text-gray-300 pb-4">We build contingency time into all schedules to account for weather or unforeseen issues. Our project managers maintain constant communication if delays occur, providing alternative solutions to minimize impact. 98% of our projects complete on or ahead of the adjusted schedule.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 4 -->
+                <div class="faq-item mb-4">
+                    <div class="faq-question flex justify-between items-center">
+                        <h3 class="text-xl font-bold text-white">What warranties do you offer?</h3>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-400 transform transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="text-gray-300 pb-4">We offer comprehensive warranties ranging from 6 months to 2 years depending on the project type and materials used. All warranties are fully documented and we conduct follow-up inspections to ensure everything meets our quality standards long after project completion.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 5 -->
+                <div class="faq-item">
+                    <div class="faq-question flex justify-between items-center">
+                        <h3 class="text-xl font-bold text-white">How sustainable are your building practices?</h3>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-400 transform transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="text-gray-300 pb-4">Sustainability is core to our operations. We prioritize energy-efficient designs, recycled materials, and waste reduction processes. Over 75% of our projects achieve LEED certification. Our team stays current with the latest green building technologies to minimize environmental impact without compromising quality.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Construction Insights / Blog -->
+    <section class="py-20 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">Construction Insights</h2>
+                <p class="text-gray-300 max-w-2xl mx-auto">Latest trends, tips, and innovations in the construction industry.</p>
+                <div class="w-20 h-1 bg-yellow-400 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Post 1 -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden hover:shadow-lg hover:shadow-yellow-400/20 transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Construction Trends" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="text-yellow-400 text-sm mb-2">June 15, 2025</div>
+                        <h3 class="text-xl font-bold text-white mb-3">Top 5 Construction Trends Shaping 2025</h3>
+                        <p class="text-gray-300 mb-4">Explore the innovative technologies and methodologies revolutionizing how we build this year.</p>
+                        <a href="#" class="text-yellow-400 hover:text-yellow-300 font-bold flex items-center transition duration-300">
+                            Read More
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Post 2 -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden hover:shadow-lg hover:shadow-yellow-400/20 transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Sustainable Materials" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="text-yellow-400 text-sm mb-2">May 28, 2025</div>
+                        <h3 class="text-xl font-bold text-white mb-3">Sustainable Materials for Modern Construction</h3>
+                        <p class="text-gray-300 mb-4">Discover eco-friendly building materials that don't compromise on durability or aesthetics.</p>
+                        <a href="#" class="text-yellow-400 hover:text-yellow-300 font-bold flex items-center transition duration-300">
+                            Read More
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Post 3 -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden hover:shadow-lg hover:shadow-yellow-400/20 transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2053&q=80" alt="Urban Design" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="text-yellow-400 text-sm mb-2">April 12, 2025</div>
+                        <h3 class="text-xl font-bold text-white mb-3">The Future of Urban Residential Design</h3>
+                        <p class="text-gray-300 mb-4">How architects are reimagining city living spaces for density without sacrificing quality of life.</p>
+                        <a href="#" class="text-yellow-400 hover:text-yellow-300 font-bold flex items-center transition duration-300">
+                            Read More
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block border border-yellow-400 hover:bg-yellow-400 hover:text-black text-yellow-400 font-bold py-3 px-8 rounded-lg text-lg transition duration-300">View All Articles</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 bg-black">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">Client Testimonials</h2>
+                <p class="text-gray-300 max-w-2xl mx-auto">Hear what our clients say about working with EliteBuild Constructors.</p>
+                <div class="w-20 h-1 bg-yellow-400 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card bg-gray-900 p-8 rounded-lg">
+                    <div class="flex mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                    </div>
+                    <blockquote class="text-gray-300 mb-6">"EliteBuild delivered our corporate headquarters ahead of schedule and under budget. Their team's professionalism and attention to detail were exceptional throughout the entire process."</blockquote>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Robert Chen" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <div class="font-bold text-white">Robert Chen</div>
+                            <div class="text-yellow-400">CFO, TechForward Inc.</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card bg-gray-900 p-8 rounded-lg">
+                    <div class="flex mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                    </div>
+                    <blockquote class="text-gray-300 mb-6">"Our home renovation exceeded all expectations. The EliteBuild team respected our budget while delivering craftsmanship that has transformed how we live. Their communication was outstanding."</blockquote>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Lisa Martinez" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <div class="font-bold text-white">Lisa Martinez</div>
+                            <div class="text-yellow-400">Homeowner</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card bg-gray-900 p-8 rounded-lg">
+                    <div class="flex mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                    </div>
+                    <blockquote class="text-gray-300 mb-6">"As a property developer, I've worked with many contractors. EliteBuild stands out for their reliability, quality workmanship, and ability to handle complex projects seamlessly."</blockquote>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="David Kim" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <div class="font-bold text-white">David Kim</div>
+                            <div class="text-yellow-400">Principal, Urban Developments LLC</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bold CTA Section -->
+    <section class="py-20 bg-yellow-400">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold text-black mb-6">Start Your Project Today</h2>
+            <p class="text-black text-xl mb-10 max-w-3xl mx-auto">Get in touch with our team to discuss your construction needs and receive a free consultation.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#contact" class="bg-black hover:bg-gray-900 text-white font-bold py-4 px-10 rounded-lg text-lg transition duration-300">Schedule a Free Consultation</a>
+                <a href="tel:+18005551234" class="bg-transparent hover:bg-black hover:text-white text-black font-bold py-4 px-10 border-2 border-black rounded-lg text-lg transition duration-300">Call Now: (800) 555-1234</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Us -->
+    <section id="contact" class="py-20 bg-black">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">Contact Us</h2>
+                <p class="text-gray-300 max-w-2xl mx-auto">Reach out to discuss your project or ask any questions.</p>
+                <div class="w-20 h-1 bg-yellow-400 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="lg:w-1/2">
+                    <form class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-white mb-2">Full Name</label>
+                                <input type="text" id="name" class="w-full bg-gray-800 border border-gray-700 text-white rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-yellow-400">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-white mb-2">Email Address</label>
+                                <input type="email" id="email" class="w-full bg-gray-800 border border-gray-700 text-white rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-yellow-400">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-white mb-2">Phone Number</label>
+                            <input type="tel" id="phone" class="w-full bg-gray-800 border border-gray-700 text-white rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-yellow-400">
+                        </div>
+                        <div>
+                            <label for="project-type" class="block text-white mb-2">Project Type</label>
+                            <select id="project-type" class="w-full bg-gray-800 border border-gray-700 text-white rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-yellow-400">
+                                <option>Residential Construction</option>
+                                <option>Commercial Construction</option>
+                                <option>Renovation & Remodeling</option>
+                                <option>Roadwork & Infrastructure</option>
+                                <option>Sustainable Building</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-white mb-2">Project Details</label>
+                            <textarea id="message" rows="5" class="w-full bg-gray-800 border border-gray-700 text-white rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-yellow-400"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-4 px-6 rounded-lg text-lg transition duration-300">Submit Request</button>
+                    </form>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="bg-gray-900 rounded-lg p-8 h-full">
+                        <h3 class="text-2xl font-bold text-white mb-6">Visit Our Office</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="text-yellow-400 mr-4 mt-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-bold mb-1">Headquarters</h4>
+                                    <p class="text-gray-300">123 Construction Way, Suite 400<br>San Francisco, CA 94107</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="text-yellow-400 mr-4 mt-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-bold mb-1">Contact</h4>
+                                    <p class="text-gray-300">
+                                        <a href="tel:+18005551234" class="hover:text-yellow-400 transition duration-300">(800) 555-1234</a><br>
+                                        <a href="mailto:info@elitebuild.com" class="hover:text-yellow-400 transition duration-300">info@elitebuild.com</a>
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="text-yellow-400 mr-4 mt-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-bold mb-1">Hours</h4>
+                                    <p class="text-gray-300">
+                                        Monday - Friday: 8:00 AM - 6:00 PM<br>
+                                        Saturday: 9:00 AM - 2:00 PM<br>
+                                        Sunday: Closed
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 rounded-lg overflow-hidden">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.156151618733!2d-122.41941592432822!3d37.77902697195905!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c6c8f4459%3A0xb10ed6d9b5050fa5!2s123%20Construction%20Way%2C%20San%20Francisco%2C%20CA%2094107!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Signup -->
+    <section class="py-16 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="bg-gray-800 rounded-lg p-8 md:p-12">
+                <div class="flex flex-col md:flex-row items-center justify-between">
+                    <div class="md:w-1/2 mb-6 md:mb-0">
+                        <h3 class="text-2xl font-bold text-white mb-2">Subscribe to Our Newsletter</h3>
+                        <p class="text-gray-300">Get construction insights, project updates, and exclusive offers.</p>
+                    </div>
+                    <div class="md:w-1/2">
+                        <form class="flex flex-col sm:flex-row gap-3">
+                            <input type="email" placeholder="Your email address" class="flex-grow bg-gray-700 border border-gray-600 text-white rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-yellow-400">
+                            <button type="submit" class="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 px-6 rounded-lg transition duration-300">Subscribe</button>
+                        </form>
+                        <p class="text-gray-400 text-xs mt-2">By subscribing, you agree to our Privacy Policy and consent to receive updates from our company.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <a href="#" class="text-2xl font-bold text-yellow-400 mb-4 inline-block">Elite<span class="text-white">Build</span></a>
+                    <p class="text-gray-400 mb-4">Premium construction services with unmatched quality and innovative solutions for residential and commercial projects.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-yellow-400 transition duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-yellow-400 transition duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-yellow-400 transition duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-yellow-400 transition duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-yellow-400 transition duration-300">Home</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-yellow-400 transition duration-300">About Us</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-yellow-400 transition duration-300">Services</a></li>
+                        <li><a href="#projects" class="text-gray-400 hover:text-yellow-400 transition duration-300">Projects</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-yellow-400 transition duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-yellow-400 transition duration-300">Residential Construction</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-yellow-400 transition duration-300">Commercial Construction</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-yellow-400 transition duration-300">Renovation & Remodeling</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-yellow-400 transition duration-300">Roadwork & Infrastructure</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-yellow-400 transition duration-300">Sustainable Building</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-4">Legal</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-yellow-400 transition duration-300">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-yellow-400 transition duration-300">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-yellow-400 transition duration-300">Licenses</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-yellow-400 transition duration-300">Insurance</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-yellow-400 transition duration-300">Safety Compliance</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2025 EliteBuild Constructors. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-yellow-400 transition duration-300 text-sm">Sitemap</a>
+                    <a href="#" class="text-gray-400 hover:text-yellow-400 transition duration-300 text-sm">Accessibility</a>
+                    <a href="#" class="text-gray-400 hover:text-yellow-400 transition duration-300 text-sm">Careers</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // FAQ accordion
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const icon = question.querySelector('svg');
+                
+                // Toggle answer
+                answer.classList.toggle('active');
+                
+                // Rotate icon
+                icon.classList.toggle('rotate-180');
+            });
+        });
+        
+        // Before-after slider
+        const slider = document.querySelector('.slider input');
+        const beforeAfter = document.querySelector('.before-after');
+        
+        slider.addEventListener('input', (e) => {
+            const sliderValue = e.target.value;
+            beforeAfter.querySelector('.after').style.width = sliderValue + '%';
+            beforeAfter.querySelector('.slider-button').style.left = `calc(${sliderValue}% - 25px)`;
+        });
+        
+        // Animated counters
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200;
+        
+        function animateCounters() {
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText;
+                const increment = target / speed;
+                
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + increment);
+                    setTimeout(animateCounters, 1);
+                } else {
+                    counter.innerText = target.toLocaleString();
+                }
+            });
+        }
+        
+        // Start counter animation when section is in view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        const statsSection = document.querySelector('.bg-gray-900');
+        if (statsSection) {
+            observer.observe(statsSection);
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+        
+        // Highlight active nav link on scroll
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Lazy loading images
+        if ('loading' in HTMLImageElement.prototype) {
+            const images = document.querySelectorAll('img[loading="lazy"]');
+            images.forEach(img => {
+                img.loading = 'lazy';
+            });
+        } else {
+            // Fallback for browsers that don't support lazy loading
+            const script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js';
+            document.body.appendChild(script);
+            
+            script.onload = () => {
+                const observer = lozad();
+                observer.observe();
+            };
+        }
+    </script>
+</body>
+</html>
